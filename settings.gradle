@@ -1,0 +1,2 @@
+rootProject.name = 'ebay-fsm-assigment'
+include('app')
