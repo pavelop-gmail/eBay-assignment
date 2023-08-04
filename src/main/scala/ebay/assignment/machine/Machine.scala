@@ -24,6 +24,7 @@ class Machine[EventT <: Event, StateT <: State[EventT, StateT]](init: StateT, sa
   def reset(toState: StateT): Unit = {
     putLock.lockInterruptibly()
     current.set(toState)
+    storeState(toState)
     putLock.unlock()
   }
 
