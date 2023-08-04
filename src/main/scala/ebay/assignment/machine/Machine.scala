@@ -44,7 +44,10 @@ class Machine[EventT <: Event, StateT <: State[EventT, StateT]](init: StateT, sa
 
     val res = Try {
       val next = if (curr.canHandle(evt)) curr.handle(evt) else curr
-      val transitionRes = onTransition.apply(curr, evt, next)
+      val transitionRes =
+        if (onTransition.isDefinedAt((curr, evt, next))) onTransition.apply(curr, evt, next)
+        else Machine.KeepMoving
+
       (next, transitionRes)
     }
     .map {
