@@ -43,6 +43,7 @@ public class JMachine<EventT extends JEvent, StateT extends JState<EventT, State
     public void reset(StateT toState) throws InterruptedException {
         putLock.lockInterruptibly();
         current.set(toState);
+        saveState(toState);
         putLock.unlock();
     }
 
