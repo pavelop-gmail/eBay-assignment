@@ -4,6 +4,7 @@ import ebay.assignment.jmachine.JMachine;
 import ebay.assignment.jmachine.Transitioner;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.UUID;
 
@@ -44,7 +45,7 @@ public class JMachineTest {
 
     @org.junit.jupiter.api.Test
     @org.junit.Test
-    public void reset() throws InterruptedException {
+    public void reset() throws InterruptedException, IOException {
         JMachine<JTestEvent, JNeoState> machine = new JMachine<>(new JNeoState.MatrixWorld(), stateChecker);
         machine.reset(new JNeoState.RealWorld());
         assertEquals(machine.state(), new JNeoState.RealWorld());

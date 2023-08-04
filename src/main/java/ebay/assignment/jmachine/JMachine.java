@@ -40,7 +40,7 @@ public class JMachine<EventT extends JEvent, StateT extends JState<EventT, State
         return current.get();
     }
 
-    public void reset(StateT toState) throws InterruptedException {
+    public void reset(StateT toState) throws InterruptedException, IOException {
         putLock.lockInterruptibly();
         current.set(toState);
         saveState(toState);

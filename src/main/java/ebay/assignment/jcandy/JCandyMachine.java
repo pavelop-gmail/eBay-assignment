@@ -5,6 +5,7 @@ import ebay.assignment.jmachine.JMachine;
 import ebay.assignment.jmachine.JState;
 import ebay.assignment.jmachine.Transitioner;
 
+import java.io.IOException;
 import java.util.List;
 
 public class JCandyMachine {
@@ -80,7 +81,7 @@ public class JCandyMachine {
         return Transitioner.JPedalAction.KeepMoving;
     };
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         JMachine<CandyEvent, CandyState> machine = new JMachine<>(new InitState(), stateChecker);
 
         System.out.println("Good run:");
